@@ -198,3 +198,21 @@ summary;
 const pagesRange =
   pages > 1000 ? "over a thpusand woah" : "less than 1000 pretty wild huh";
 console.log(`The book has ${pagesRange}`);
+
+// short circuiting js
+// And returns the false values until it finds it
+let canRead = true && false;
+console.log(canRead);
+console.log(false && "Some string");
+console.log(hasMovieAdaption && "This Book has a movie");
+console.log("Harish" && "Some string");
+console.log(0 && "Some string");
+
+// OR short circuiting returns the true value when it finds it
+console.log(true || false);
+console.log(false || "Harish is a playboy very sexy");
+console.log(book.translations.spanish || "not translated");
+
+// sometimes 0  gets read as false and hence has consequences so we use nullish operaor
+const countWrong = book.reviews.librarything.reviewsCount ?? "no data";
+console.log(countWrong);
