@@ -145,7 +145,7 @@ function getBook(id) {
 
 //Destructuring
 
-const book = getBook(2);
+const book = getBook(1);
 
 // const title = book.title;
 // const author = book.author;
@@ -181,5 +181,9 @@ upDateBook;
 // template literals
 const summary = `${title} , a ${pages}-page long,was written by ${author} and is published in ${
   publicationDate.split("-")[0]
-}`;
+} `;
 summary;
+// ternary operator in js
+const pagesRange =
+  pages > 1000 ? "over a thpusand woah" : "less than 1000 pretty wild huh";
+console.log(`The book has ${pagesRange}`);
