@@ -178,10 +178,21 @@ const upDateBook = {
 };
 upDateBook;
 
+// Arrow function es6
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => {
+  return str.split("-")[0];
+};
+
+console.log(getYear(publicationDate));
+
 // template literals
-const summary = `${title} , a ${pages}-page long,was written by ${author} and is published in ${
-  publicationDate.split("-")[0]
-} `;
+const summary = `${title} , a ${pages}-page long,was written by ${author} and is published in ${getYear(
+  publicationDate
+)} `;
 summary;
 // ternary operator in js
 const pagesRange =
