@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 //Destructuring
-
+/*
 const book = getBook(1);
 
 // const title = book.title;
@@ -224,3 +224,22 @@ function getTotalReviewcount(book) {
   return goodreads + librarything;
 }
 console.log(getTotalReviewcount(book));
+*/
+// functional array methods
+// map method
+
+const books = getBooks();
+
+const x = [1, 2, 3, 4].map((el) => el * 2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+console.log(titles);
+
+const essentialData = books.map((book) => {
+  return {
+    title: book.title,
+    author: book.author,
+  };
+});
+essentialData;
