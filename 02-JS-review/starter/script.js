@@ -257,3 +257,33 @@ adventureBooks;
 
 const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
 console.log(pagesAllBooks);
+
+// sort method
+const xt = [6, 5, 6, 7, 8, 9];
+const sorted = xt.sort((a, b) => a - b);
+console.log(sorted); // [6,6,7,8,9];
+// it also changes the original array since it is not a functional method
+const sortedPages = books.slice().sort((a, b) => b.pages - a.pages);
+
+//immutable arrays
+
+// adding
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber Of Secrets",
+  author: "J K Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// delete book object from array
+
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+//update a book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 12 } : book
+);
+booksAfterUpdate;
