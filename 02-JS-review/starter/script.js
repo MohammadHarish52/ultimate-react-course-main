@@ -158,3 +158,22 @@ console.log(author, title);
 // destructuring arrays
 const [primaryGenres, secondryGenre] = genres;
 console.log(primaryGenres, secondryGenre);
+
+//rest and spread operator
+
+//rest
+const [primary, secondry, ...other] = genres;
+console.log(other);
+
+//spread operator
+const newGenres = [...genres, "Epic lauren asher"];
+console.log(newGenres);
+
+const upDateBook = {
+  ...book,
+  // adding new property
+  moviePublicationDate: "2001-12-19",
+  // overirding old
+  pages: 1278,
+};
+upDateBook;
