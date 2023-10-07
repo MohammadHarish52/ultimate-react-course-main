@@ -216,3 +216,11 @@ console.log(book.translations.spanish || "not translated");
 // sometimes 0  gets read as false and hence has consequences so we use nullish operaor
 const countWrong = book.reviews.librarything.reviewsCount ?? "no data";
 console.log(countWrong);
+
+//optional chaining
+function getTotalReviewcount(book) {
+  const goodreads = book.reviews.goodreads?.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+console.log(getTotalReviewcount(book));
