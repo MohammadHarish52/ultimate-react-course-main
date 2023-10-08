@@ -228,6 +228,8 @@ console.log(getTotalReviewcount(book));
 // functional array methods
 // map method
 
+/*
+
 const books = getBooks();
 
 const x = [1, 2, 3, 4].map((el) => el * 2);
@@ -287,3 +289,23 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
   book.id === 1 ? { ...book, pages: 12 } : book
 );
 booksAfterUpdate;
+
+*/
+// fetch("https://jsonplaceholder.typicode.com/todos/1")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+// async await
+
+async function getTodos() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+  //js will wait for this to get completed
+  const data = await response.json();
+  console.log(data);
+
+  return data;
+}
+const todos = getTodos();
+console.log(todos);
+
+console.log("Harish");
