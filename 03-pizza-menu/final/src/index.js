@@ -67,14 +67,20 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizza = pizzas.length;
   return (
     <main className="menu">
-      <h2>Our Menu</h2>;
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </ul>
+      <h2>Our Menu</h2>
+
+      {numPizza > 0 ? (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      ) : null}
+
       {/* <Pizza
         name="Pizza Spinaci"
         ingedient="Tomato , mozarella , spinach , and ricotta cheese"
@@ -111,7 +117,16 @@ function Footer() {
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
   // if (hour >= openHour && hour <= closeHour) alert("We are currently open");
-  return <footer className="footer">{new Date().toLocaleTimeString()}</footer>;
+  return (
+    <footer className="footer">
+      {isOpen ? (
+        <div className="order">
+          <p>We're Open until {closeHour}:00 Come Visit us or Order online.</p>
+          <button className="btn">Order</button>
+        </div>
+      ) : null}
+    </footer>
+  );
 }
 
 //React v18
