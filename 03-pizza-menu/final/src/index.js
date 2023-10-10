@@ -74,11 +74,17 @@ function Menu() {
       <h2>Our Menu</h2>
 
       {numPizza > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian Cuisine.6 creative dishes to create from. All from
+            our stone Oven ,all organic ,all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : null}
 
       {/* <Pizza
@@ -100,15 +106,19 @@ function Menu() {
 // function name must start with uppercase
 // the actual props passed can be passed as destructuring and used in the component
 function Pizza({ pizzaObj }) {
-  if (pizzaObj.soldOut) return null;
+  //if (pizzaObj.soldOut) return null;
 
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt="pizza"></img>
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+        {pizzaObj.soldOut ? (
+          <span>Sold Out</span>
+        ) : (
+          <span>{pizzaObj.price}</span>
+        )}
       </div>
     </li>
   );
