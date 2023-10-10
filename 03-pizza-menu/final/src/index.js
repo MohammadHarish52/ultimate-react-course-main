@@ -98,14 +98,17 @@ function Menu() {
 }
 
 // function name must start with uppercase
-function Pizza(props) {
+// the actual props passed can be passed as destructuring and used in the component
+function Pizza({ pizzaObj }) {
+  if (pizzaObj.soldOut) return null;
+
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt="pizza"></img>
+      <img src={pizzaObj.photoName} alt="pizza"></img>
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -117,15 +120,37 @@ function Footer() {
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
   // if (hour >= openHour && hour <= closeHour) alert("We are currently open");
+
+  // if (!isOpen)
+  //   return (
+  //     <p>
+  //       We're Happy to Welcome you between {openHour} and {closeHour}
+  //     </p>
+  //   );
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>We're Open until {closeHour}:00 Come Visit us or Order online.</p>
-          <button className="btn">Order</button>
-        </div>
-      ) : null}
+        <Order openHour={openHour} closeHour={closeHour} />
+      ) : (
+        <p>
+          We're Happy to Welcome you between {openHour} and {closeHour}
+        </p>
+      )}
     </footer>
+  );
+}
+
+// values of other functions can also be taken as a prop and used in another component
+
+function Order({ closeHour, openHour }) {
+  return (
+    <div className="order">
+      <p>
+        We're Open from {openHour} until {closeHour}:00 Come Visit us or Order
+        online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
